@@ -59,7 +59,7 @@ PASS_THROUGH_FIRST = ("allset.pivot_pick", "allset.inview_drag", "allset.uv_shel
                       "allset.graph_prefer_click", "allset.time_slider_bookmark_click",
                       "allset.time_slider_bookmark_hover", "allset.time_slider_bookmark_drag",
                       "allset.graph_hover_drop")
-PASS_THROUGH_FIRST += ('allset.attribute_field_hover', 'allset.option_editor_key')
+PASS_THROUGH_FIRST += ('allset.attribute_field_hover', 'allset.option_editor_key', 'allset.joint_move_prepare')
 PASS_THROUGH_FIRST += OUTLINER_TREE_ITEMS
 
 

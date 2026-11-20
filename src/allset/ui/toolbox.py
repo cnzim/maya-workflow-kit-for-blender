@@ -27,7 +27,7 @@ unregister; the names used elsewhere are importable from here too.
 import bpy
 from bl_ui.space_toolsystem_toolbar import VIEW3D_PT_tools_active as TOOLBAR
 
-from ..operators import tool_keys
+from ..operators import joint_move, tool_keys
 # the split-out parts, also read through this module by other UI, the tests and tools
 from .toolbox_column import (GAP_PX, OUTLINER_PX, RETINA_EXTRA_PX, TOOLBAR_PX, _enabled,  # noqa: F401
                              column_width, is_toolbox, settle)
@@ -219,6 +219,13 @@ def register():
     TOOLBAR.prepend(_draw_begin)
     bpy.types.VIEW3D_HT_header.prepend(_draw_armature_mode_header)
     if not bpy.app.background:
+        from .. import keymap
+        from ..keymap.maya_patches_manip import GIZMO_KEYMAPS
+        for name in GIZMO_KEYMAPS:
+            keymap.add_item(name, joint_move.ALLSET_OT_joint_move_prepare.bl_idname, 'LEFTMOUSE', 'CLICK_DRAG',
+                            head=True)
+        keymap.add_item('3D View Tool: Move', joint_move.ALLSET_OT_joint_move_prepare.bl_idname,
+                        'LEFTMOUSE', 'CLICK_DRAG', space_type='VIEW_3D', head=True)
         bpy.app.timers.register(_auto_armature_tick, first_interval=0.5, persistent=True)
         bpy.app.timers.register(_ensure_pose_watch, first_interval=1.0, persistent=True)
         bpy.app.timers.register(_ensure_outliner_watch, first_interval=1.0, persistent=True)

@@ -28,6 +28,9 @@ def start(context, kwargs, button='LEFTMOUSE'):
         return bpy.ops.allset.live_translate('INVOKE_DEFAULT', release_event=button, **kwargs)
     from . import pivot
     pivot.origins_for_groups(context)
+    if context.mode == 'POSE':
+        from . import joint_move
+        joint_move.prepare(context)
     return bpy.ops.transform.translate('INVOKE_DEFAULT', **kwargs)
 
 

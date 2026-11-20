@@ -18,6 +18,7 @@ from . import move_component  # Edit Mesh > Transform (Transform Component)
 from . import extrude_curve  # Edit Mesh > Extrude of faces along a selected curve
 from . import ik_rp  # #162: Maya ikRPsolver pole vector / twist
 from . import joint_edit  # #160: joint moves keep Maya frames, Preserve Children, Edit-mode Translate
+from . import joint_move
 from . import pivot_follow  # a placed component pivot moves with the components (#351)
 from . import pivot_pick
 from . import pivot_rotate
@@ -44,7 +45,7 @@ classes = (*display.classes, *group.classes, *hold.classes, *taphold.classes,
            *component.classes, *manip.classes, *material.classes,
            *marquee.classes, *lattice_pick.classes, *preselect.classes, *select_priority.classes, *menu_extras.classes,
            *tool_keys.classes, *symmetry.classes, *pivot.classes, *snap_align.classes, *time_keys.classes,
-           *joints.classes, *skin.classes, *driven_key.classes, *rig_tools.classes, *mesh_maya.classes,
+           *joints.classes, *joint_move.classes, *skin.classes, *driven_key.classes, *rig_tools.classes, *mesh_maya.classes,
            *mesh_tools.classes, *extrude.classes, *uv_tools.classes, *uv_shells.classes, *uv_modify.classes, *anim_layers.classes, *uv_select_178.classes, *shading_maps.classes, *fx.classes, *project.classes, *graph_keys.classes, *graph_key_menu.classes, *deformer_weights.classes, *joint_labels.classes, *ik_fk.classes, *playblast.classes, *key_batch.classes, *cut_sew.classes, *multi_cut.classes,
            *outliner_drag.classes, *key_insert.classes, *view_keys3.classes, *global_keys4.classes,
            *pivot_menu.classes, *sets.classes, *menu_items.classes, *file_io.classes, *option_windows.classes,

@@ -14,7 +14,9 @@ Restart Blender after updating this installed extension, or disable and re-enabl
 
 These changes follow Maya's [selection modifiers and F8 behavior](https://help.autodesk.com/cloudhelp/2024/ENU/Maya-Basics/files/GUID-5C5F2B9B-BE16-4C49-B72B-70EA7CB4C688.htm) and [Select None shortcut](https://help.autodesk.com/cloudhelp/2022/ENU/Maya-Basics/files/GUID-D1BBC051-0EE7-4A91-B4FF-2A369764EC8B.htm).
 
-Blender still represents joints as bones inside armatures. Rest editing, connected-bone translation, mixed object/bone transforms, box selection across different rigs, and custom bone-shape picking retain Blender limitations. Existing parenting, connectivity, constraints, and animation data are not converted. This is closer Maya interaction, not complete Maya rigging equivalence.
+With a skinned joint selected in Pose Mode, drag the Move tool to translate it. Its descendants and weighted skin follow, and the displayed segment from its parent extends to the new joint position. For FK deform joints on a single editable rig, the first pose move switches off Blender's Connected checkbox for that joint and keeps its parent and bind pose. Undo restores the checkbox along with the pose. Blender handles IK, mirrored posing, and joints with existing location animation as usual. Skin > Move Skinned Joints edits the bind pose.
+
+Blender still represents joints as bones inside armatures. Mixed object/bone transforms, box selection across different rigs, and custom bone-shape picking retain Blender limitations.
 
 Verification uses Blender 5.2 LTS and 5.3 (`python tests/integration/run.py`, `--blender 5.3` for 5.3). Run `tests/integration/blender_joint_workflow.py` in a background factory session for mode/selection/modifier/keymap checks. Run `tests/integration/blender_joint_viewport.py` in a separate factory GUI session for actual viewport joint/mesh/background picking with selection priority enabled and disabled (disabled: only joint hits are the kit's); that test exits its Blender process after completion.
 

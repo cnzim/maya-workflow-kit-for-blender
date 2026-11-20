@@ -104,6 +104,11 @@ MMB_TOOLS = (("3D View Tool: Move", "transform.translate", 'TRANSLATE'),
 
 
 def patch_active_handle(kd):
+    # A connected skinned joint needs a pose translation channel before the Move drag starts.
+    move_drag_keymaps = GIZMO_KEYMAPS + ("3D View Tool: Move",)
+    for km in move_drag_keymaps:
+        _add(kd, km, "allset.joint_move_prepare", dict(make_event("LEFTMOUSE", "CLICK_DRAG"), shift=-1, ctrl=-1),
+             first=True, shadows=move_drag_keymaps)
     for km in GIZMO_KEYMAPS:
         _add(kd, km, "allset.manip_press", make_event("LEFTMOUSE", "PRESS"), first=True)
     for km, idname, mode in MMB_TOOLS:
